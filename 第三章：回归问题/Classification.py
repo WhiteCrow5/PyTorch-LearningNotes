@@ -46,7 +46,8 @@ class Net(nn.Module):
         # xw + b
         self.fc1 = nn.Linear(28*28,256)
         self.fc2 = nn.Linear(256,64)
-        self.fc3 = nn.Linear(64,10)
+        self.fc3 = nn.Linear(64,32)
+        self.fc4 = nn.Linear(32,10)
 
     def forward(self, x):
         # x ; [b, 1, 28, 28]
@@ -54,15 +55,17 @@ class Net(nn.Module):
         x = F.relu(self.fc1(x))
         # h2 = relu(h1w + b)
         x = F.relu(self.fc2(x))
-        # h3 = h2w3 + b3
-        x = self.fc3(x)
-
+        # h3= relu(h2w + b)
+        x = F.relu(self.fc3(x))
+        # h4 = softmax(h3w3 + b3)
+        x = F.softmax(self.fc4(x))
         return x
+
 
 # 实例化网络、优化器
 net = Net()
 # optimizer = optim.SGD(net.parameters(), lr = 0.005, momentum=0.9)
-optimizer = optim.Adam(net.parameters(), lr = 0.005)
+optimizer = optim.Adam(net.parameters(), lr = 0.003)
 
 # 3. 训练模型
 train_loss = []
