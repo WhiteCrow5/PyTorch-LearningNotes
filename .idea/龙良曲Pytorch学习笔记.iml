@@ -3,6 +3,7 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/第三章：回归问题" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第十二章：迁移学习/宝可梦" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.6 (pytorch) (2)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
