@@ -37,9 +37,10 @@ if __name__ == '__main__':
     model = nn.Sequential(
         *list(model.children())[:-1],
         Flatten(),
-    )
-    x = torch.randn(2,3,224,224)
-    print(model(x).shape)
+        nn.Linear(512,5),
+    ).to(device)
+    # x = torch.randn(2,3,224,224)
+    # print(model(x).shape)
     optimizer = optim.Adam(model.parameters(),lr=lr)
     criterion = nn.CrossEntropyLoss()
     best_acc = 0
